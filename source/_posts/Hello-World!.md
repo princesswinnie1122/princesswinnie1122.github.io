@@ -13,7 +13,7 @@ categories:
 
 這是剛做的可愛海生物小[測驗](https://xpark365quiz.ad2iction.com/qr.html)：
 
-![cutest](C:\Users\ewinn\blog\source\assets\cutest.jpg)
+![cutest](assets/cutest.jpg)
 
 根據我對自己的認識將標籤分為三類~
 
