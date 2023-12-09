@@ -8,7 +8,7 @@ rss: /atom.xml
 home:
   style: default           # default, detail
 
-favicon: /images/avatar.jpg                  # Path to the custom favicon (e.g. "/favicon.png" if your favicon file is located at /source/favicon.png)
+favicon: /images/avatar-32.jpg                  # Path to the custom favicon (e.g. "/favicon.png" if your favicon file is located at /source/favicon.png)
 
 # Banner
 banner:
