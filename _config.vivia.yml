@@ -35,7 +35,7 @@ sidebar:
 archive_type: 'monthly'
 recent_posts_limits: 5
 categories:
-  max_depth:              # Maximum depth of categories displayed in the widget (null for unlimited)
+  max_depth: 5             # Maximum depth of categories displayed in the widget (null for unlimited)
 
 # Personal info
 avatar: /images/avatar.jpg
@@ -54,7 +54,7 @@ links:
 
 comment:
   valine:
-    enable: false
+    enable: true
     appId: 
     appKey: 
     placeholder: Just go go
