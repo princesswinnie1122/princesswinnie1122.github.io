@@ -5,6 +5,8 @@ tags:
   - me
 categories:
   - Share
+photos:
+  - /assets/cutest.jpg
 ---
 
 一直都很喜歡做心理測驗，除了想試試準不準，也能在過程中檢視對自己的了解程度。
