@@ -5,8 +5,6 @@ tags:
   - me
 categories:
   - Share
-photos:
-  - /assets/cutest.jpg
 ---
 
 一直都很喜歡做心理測驗，除了想試試準不準，也能在過程中檢視對自己的了解程度。
@@ -15,7 +13,7 @@ photos:
 
 這是剛做的可愛海生物小[測驗](https://xpark365quiz.ad2iction.com/qr.html)：
 
-<img src="/assets/cutest.jpg" alt="cutest" width="300">
+<img src="/assets/cutest.jpg" alt="cutest" width="400">
 
 根據我對自己的認識將標籤分為三類~
 
@@ -40,7 +38,7 @@ photos:
 2. 我的生涯規劃
 3. 學習狀況反思
 4. 理性、感性的平衡點
-5. "你想活出怎樣的人生"心得
+5. 「你想活出怎樣的人生」心得
 6. 關於平權
 7. 關於創業
 8. 台灣政治
