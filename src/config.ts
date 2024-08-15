@@ -68,6 +68,11 @@ export const profileConfig: ProfileConfig = {
       icon: 'fa6-brands:github',
       url: 'https://github.com/princesswinnie1122',
     },
+    {
+      name: 'Instagram',
+      icon: 'fa6-brands:instagram',
+      url: 'https://www.instagram.com/ewinnie.sheng',
+    },
   ],
 }
 
