@@ -1,6 +1,5 @@
-# About 🐈
+# About Me 👩‍🚀
 
-### Some facts about me 
 - Location: Taipei City, Taiwan
 - University: NTHU, Taiwan
 - Major: ChemE + CS (in my junior year)
@@ -11,7 +10,8 @@
   - rock climbing
   - reading
 
-### My favorites...
+# My favorites 🐈
+
 - Movies
   - Interstellar (2014)
   - The Greatest Showman (2017)
