@@ -21,7 +21,8 @@
 - Sherlock (2010–2017)
 - The Big Bang Theory (2007-2019)
 - Young Sheldon (2017-2024)
-- Animes
+
+### Animes 🌌
 - Attack on Titan (2013-2023)
 - Haikyu!! (2012-2020)
 
