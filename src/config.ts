@@ -76,6 +76,11 @@ export const profileConfig: ProfileConfig = {
       icon: 'fa6-brands:instagram',
       url: 'https://www.instagram.com/ewinnie.sheng',
     },
+    {
+      name: 'LinkedIn',
+      icon: 'fa6-brands:linkedin',
+      url: 'https://www.linkedin.com/in/winnie-sheng-5699901a3/',
+    }
   ],
 }
 

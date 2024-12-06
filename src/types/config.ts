@@ -10,6 +10,11 @@ export type SiteConfig = {
     hue: number
     fixed: boolean
   }
+
+  toc: {
+    enable: boolean
+  }
+
   banner: {
     enable: boolean
     src: string
@@ -22,6 +27,7 @@ export type SiteConfig = {
   }
 
   favicon: Favicon[]
+  
 }
 
 export type Favicon = {
