@@ -32,6 +32,7 @@
 - The Killers
 - Oasis
 - Green Day
+- AKMU
 - IVE
 
 ### Books 📖
