@@ -2,7 +2,6 @@
 import { Icon } from 'astro-icon/components'
 ---
 
-<!-- There can't be a filter on parent element, or it will break `fixed` -->
 <div class="back-to-top-wrapper hidden lg:block">
     <div id="back-to-top-btn" class="back-to-top-btn hide flex items-center rounded-2xl overflow-hidden transition" onclick="backToTop()">
         <button aria-label="Back to Top" class="btn-card h-[3.75rem] w-[3.75rem]">
@@ -13,31 +12,28 @@ import { Icon } from 'astro-icon/components'
 
 <style lang="stylus">
 .back-to-top-wrapper
-    width: 3.75rem
-    height: 3.75rem
-    position: absolute
-    right: 0
-    top: 0
+  /* No extra positioning needed here */
 
 .back-to-top-btn
-    color: var(--primary)
-    font-size: 2.25rem
-    font-weight: bold
-    border: none
-    position: fixed
-    bottom: 10rem
-    opacity: 1
-    cursor: pointer
-    transform: translateX(5rem)
-    i
-        font-size: 1.75rem
-    &.hide
-        transform: translateX(5rem) scale(0.9)
-        opacity: 0
-        pointer-events: none
-    &:active
-      transform: translateX(5rem) scale(0.9)
+  position: fixed
+  bottom: 3rem         /* Adjust vertical position */
+  left: 50%            /* Start from the center of the screen */
 
+  transform: translateX(calc((var(--page-width) / 2) - 6rem))
+  color: var(--primary)
+  font-size: 2.25rem
+  font-weight: bold
+  border: none
+  opacity: 1
+  cursor: pointer
+  transition: transform 0.3s, opacity 0.3s
+  i
+    font-size: 1.75rem
+  
+  &.hide
+    transform: translateX(calc((var(--page-width) / 2) - 6rem)) scale(0.9)
+    opacity: 0
+    pointer-events: none
 </style>
 
 <script is:raw is:inline>
