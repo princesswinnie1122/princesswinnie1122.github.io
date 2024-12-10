@@ -28,20 +28,22 @@ const mainPanelTop = siteConfig.banner.enable
   ? `calc(${BANNER_HEIGHT}vh - ${MAIN_PANEL_OVERLAPS_BANNER_HEIGHT}rem)`
   : "5.5rem"
 
-// Condition to show TOC: TOC is enabled, there are headings, and we are not on Home or About page.
+// Show TOC only if conditions are met
 const showTOC = siteConfig.toc.enable && headings.length > 0 && title !== "Home" && title !== "About";
 
-// Use three columns if showing TOC, else only two
-const gridColumns = showTOC ? "grid-cols-[15rem_auto_12rem]" : "grid-cols-[15rem_auto]";
+// Dynamically set the TOC column width
+const tocWidth = showTOC ? '12rem' : '0';
 ---
 
 <Layout title={title} banner={banner} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle}>
+
   <!-- Navbar -->
   <slot slot="head" name="head"></slot>
+
   <div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto">
-      <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all">
-          <Navbar></Navbar>
-      </div>
+    <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all">
+        <Navbar></Navbar>
+    </div>
   </div>
 
   <!-- Banner -->
@@ -63,10 +65,11 @@ const gridColumns = showTOC ? "grid-cols-[15rem_auto_12rem]" : "grid-cols-[15rem
 
   <!-- Main content -->
   <div class="absolute w-full z-30 pointer-events-none" style={`top: ${mainPanelTop}`}>
-    <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto">
+    <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto"
+         style={`--toc-width: ${tocWidth}`}>
       <div
         id="main-grid"
-        class={`transition duration-700 w-full left-0 right-0 grid ${gridColumns} grid-rows-[auto_1fr_auto] lg:grid-rows-[auto] mx-auto gap-4 px-0 md:px-4`}
+        class="transition duration-700 w-full left-0 right-0 grid grid-cols-[15rem_auto_var(--toc-width)] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto] mx-auto gap-4 px-0 md:px-4"
       >
         {hasBannerCredit && (
           <a
@@ -112,19 +115,20 @@ const gridColumns = showTOC ? "grid-cols-[15rem_auto_12rem]" : "grid-cols-[15rem
           </div>
         </main>
 
-        <!-- Only render the TOC if showTOC is true -->
-        {showTOC && (
-          <div
-            id="toc-wrapper"
-            class="hidden lg:block w-full h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden hide-scrollbar mt-14"
-          >
+        <!-- TOC column -->
+        <div
+          id="toc-wrapper"
+          class={`${!showTOC ? 'hidden' : ''} lg:block relative`}
+        >
+          <!-- Keep consistent structure for TOC -->
+          <div id="toc-inner-wrapper" class="sticky top-14 h-[calc(100vh_-_20rem)] overflow-y-auto hide-scrollbar">
             <div id="toc" class="w-full h-full transition-swup-fade">
               <div class="h-8 w-full"></div>
-              <TOC headings={headings}></TOC>
+              {showTOC && <TOC headings={headings}></TOC>}
               <div class="h-8 w-full"></div>
             </div>
           </div>
-        )}
+        </div>
 
         <div class="footer col-span-3 onload-animation block lg:hidden">
           <Footer></Footer>

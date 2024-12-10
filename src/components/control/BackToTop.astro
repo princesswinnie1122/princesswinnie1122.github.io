@@ -19,7 +19,7 @@ import { Icon } from 'astro-icon/components'
   bottom: 3rem         /* Adjust vertical position */
   left: 50%            /* Start from the center of the screen */
 
-  transform: translateX(calc((var(--page-width) / 2) - 6rem))
+  transform: translateX(calc((var(--page-width) / 2) - 1rem))
   color: var(--primary)
   font-size: 2.25rem
   font-weight: bold
@@ -31,7 +31,7 @@ import { Icon } from 'astro-icon/components'
     font-size: 1.75rem
   
   &.hide
-    transform: translateX(calc((var(--page-width) / 2) - 6rem)) scale(0.9)
+    transform: translateX(calc((var(--page-width) / 2) - 1rem)) scale(0.9)
     opacity: 0
     pointer-events: none
 </style>

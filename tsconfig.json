@@ -3,8 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "strictNullChecks": true,
-    "allowJs": false,
-    "declaration": true,
+    "allowJs": true,
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
