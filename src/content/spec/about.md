@@ -1,18 +1,18 @@
 # About Me 👩‍🚀
 
-> _**"Study hard what interests you the most in the most undisciplined, irreverent and original manner possible."**_ — Richard Feynman
+- Location: Taipei City, Taiwan
+- University: NTHU, Taiwan
+- Major: ChemE + CS (in my junior year)
 
-📍 Taipei City, Taiwan\
-⚗️ ChemE + CS @ NTHU (in my junior year)
-
-## Hobbies 🐈
+## Hobbies ⚗️
 - playing chess
 - playing the piano
 - graphic design
 - rock climbing
 - reading
 
-## My favorites 
+## My favorites 🐈
+
 ### Movies 🎥
 - Interstellar (2014)
 - The Greatest Showman (2017)
