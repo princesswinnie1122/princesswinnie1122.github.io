@@ -5,7 +5,7 @@ description: CH5~6 of Transport Phenomena (BSL), "Part 1 - Momentum Balance".
 image: ''
 tags: [ChemE, Physics]
 category: Notes
-draft: false
+draft: true
 ---
 
 ## The Time-Smoothed Method
