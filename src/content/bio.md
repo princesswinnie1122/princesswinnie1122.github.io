@@ -1,28 +1,13 @@
 ---
-name: "Claude Shannon"
-avatar: "shannon.jpg"
-shortBio: "Mathematician and electrical engineer known as the 'Father of Information Theory'. Pioneer in digital computing and cryptography."
-institution: "MIT, Cambridge MA"
+name: "Winnie Sheng"
+avatar: "winnie.jpg"
 ---
+Hi, I'm Winnie, an undergraduate studying Chemical Engineering and Computer Science at National Tsing Hua University (NTHU), Taiwan.
 
-I am a mathematician and electrical engineer best known for founding **Information Theory**. My work in the late 1940s established the theoretical foundations of modern digital communications and computing.
+My interests revolve around representation learning that respects the symmetries of nature. I aim to use machine learning approaches such as neural quantum states to advance accurate variational modeling of quantum many-body systems beyond the practical reach of conventional ab initio methods, including strongly correlated systems.
 
-## My Life
+At Caltech's [Anima AI+Science Lab](https://tensorlab.cms.caltech.edu/users/anima/index.html), I'm part of the AI for chemistry group, advised by Prof. Anima Anandkumar. My latest work focuses on SU(2)-equivariant graph neural networks for molecular magnetism. I also helped with GPU acceleration of the OrbitAll foundation model. Currently, at NTHU's [Lab for Material and Molecular Design](https://sites.google.com/view/lm2d), I'm developing equivariant GNNs for vibrational circular dichroism (VCD) spectroscopy with Prof. Kun-Han Lin. My earlier work there includes developing an automated force-field parameterization toolkit and studying high-entropy alloys for the hydrogen evolution reaction using density functional theory.
 
-Born in Petoskey, Michigan on April 30, 1916, I showed an early aptitude for engineering and mathematics. After studying at the University of Michigan, I completed my PhD at MIT where I famously applied Boolean algebra to electrical circuits. My master's thesis on relay switching circuits is considered one of the most important master's theses ever written.
+I'm also an LLM Research Intern (Part-time) at the National Center for High-Performance Computing (NCHC). Previously, as captain of the NTHU Student Cluster Competition Team, I led NTHU teams at national, Asia-Pacific, and international competitions. More details are in my [CV](/cv/).
 
-During World War, I worked at Bell Labs on fire control systems and cryptography, which led to my seminal work in information theory.
-
-## Current Work
-
-I continue to work on various problems at the intersection of mathematics, engineering, and computer science. My interests include artificial intelligence, pattern recognition, game theory, and the fundamental limits of computation.
-
-I also enjoy juggling, unicycling, and playing the clarinet - I even built a juggling machine!
-
-## Research Interests
-
-My research focus includes: **Information Theory**, **Cryptography**, **Digital Computing**, **Artificial Intelligence**, **Game Theory**, and **Switching Circuits**.
-
----
-
-*"I am a mathematician. I am interested in the fundamental limits on the rate at which information can be transmitted."*
+Outside research, I'm a cat lover, and I enjoy playing chess and piano! Feel free to connect!

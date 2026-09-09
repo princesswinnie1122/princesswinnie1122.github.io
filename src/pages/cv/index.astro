@@ -1,7 +1,6 @@
 ---
-import { getEntry, render } from "astro:content";
+import { getEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Timeline from "../../components/ui/Timeline.astro";
 import { PAGES } from "../../config";
 
 if (PAGES.cv.isActive === false) {
@@ -10,58 +9,32 @@ if (PAGES.cv.isActive === false) {
 
 const cvEntry = await getEntry("cv", "cv");
 if (!cvEntry) {
-    throw new Error(
-        "CV content not found. Please ensure src/content/cv.md exists.",
-    );
+    throw new Error("CV content not found. Please ensure src/content/cv.md exists.");
 }
 
-const { Content } = await render(cvEntry);
-const { name, title, experience = [], education = [] } = cvEntry.data;
+const { pdfUrl } = cvEntry.data;
+const viewerUrl = pdfUrl ? `${pdfUrl.split("#")[0]}#toolbar=1&navpanes=0&view=FitH` : undefined;
 ---
 
 <BaseLayout title={PAGES.cv.title}>
     <header class="page-header">
         <h1 class="page-title">{PAGES.cv.title}</h1>
-        <p class="page-subtitle">{PAGES.cv.subtitle}</p>
     </header>
 
-    <div class="container-narrow">
-        {
-            experience.length > 0 && (
-                <section class="section">
-                    <h2 class="section-title border-b border-border pb-2">
-                        Professional Experience
-                    </h2>
-                    <Timeline items={experience.map(exp => ({
-                        title: exp.role,
-                        subtitle: exp.institution,
-                        period: exp.period,
-                        description: exp.description
-                    }))} />
-                </section>
-            )
-        }
-
-        {
-            education.length > 0 && (
-                <section class="section">
-                    <h2 class="section-title border-b border-border pb-2">
-                        Education
-                    </h2>
-                    <Timeline items={education.map(edu => ({
-                        title: edu.degree,
-                        subtitle: edu.institution,
-                        period: edu.period,
-                        description: edu.description,
-                        thesis: edu.thesis
-                    }))} />
-                </section>
-            )
-        }
-
-        <div class="prose max-w-none">
-            <Content />
-        </div>
-    </div>
+    {pdfUrl ? (
+        <section aria-label="CV PDF">
+            <iframe
+                src={viewerUrl}
+                title="Winnie Sheng's curriculum vitae (PDF)"
+                class="cv-pdf-viewer"
+            />
+            <p class="mt-3 text-sm">
+                <a href={pdfUrl} target="_blank" rel="noopener noreferrer" data-astro-reload>
+                    Open PDF in a new tab
+                </a>
+            </p>
+        </section>
+    ) : (
+        <p>CV coming soon.</p>
+    )}
 </BaseLayout>
-

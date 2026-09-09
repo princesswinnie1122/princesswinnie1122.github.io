@@ -1,10 +1,13 @@
 ---
-import { SITE, SOCIALS, SOCIAL_ICONS } from "../../config";
+import { SOCIALS, SOCIAL_ICONS } from "../../config";
 import { getCollection } from "astro:content";
 import Icon from "../ui/Icon.astro";
 import { Image } from 'astro:assets';
 
 const activeSocials = SOCIALS.filter((s) => s.isActive);
+const iconSocials = activeSocials.filter((social) => social.name !== "Mail");
+const emailLink = activeSocials.find((social) => social.name === "Mail" && social.href.startsWith("mailto:"));
+const emailAddress = emailLink?.href.slice("mailto:".length).split("?")[0];
 const bioCollection = await getCollection("bio");
 const bio = bioCollection[0]?.data;
 ---
@@ -19,7 +22,7 @@ const bio = bioCollection[0]?.data;
                 height={160}
                 densities={[1.5, 2]} 
                 format="webp"
-                class="sidebar-avatar"
+                class="sidebar-avatar lg:mb-4"
                 loading="eager"
             />
         )}
@@ -27,17 +30,17 @@ const bio = bioCollection[0]?.data;
             {bio?.name && <h1 class="sidebar-name">{bio.name}</h1>}
             {bio?.institution && (
                 <p class="sidebar-info">
-                    <Icon name="Institution" size={24} />
+                    <Icon name="Institution" size={16} class="shrink-0" />
                     {bio.institution}
                 </p>
             )}
-            {bio?.shortBio && (
-                <p class="sidebar-bio mt-2 max-md:hidden">{bio.shortBio}</p>
+            {emailLink && emailAddress && (
+                <a href={emailLink.href} class="sidebar-email mt-6">{emailAddress}</a>
             )}
             <div class="flex gap-1 flex-wrap items-center justify-center max-lg:justify-start mt-3">
-                {activeSocials.map((social) => (
-                    <a
-                        href={social.href}
+                {iconSocials.map((social) => (
+                    social.href.trim() ? <a
+                        href={social.href.trim()}
                         aria-label={social.linkTitle}
                         title={social.linkTitle}
                         target="_blank"
@@ -45,7 +48,15 @@ const bio = bioCollection[0]?.data;
                         class="social-link"
                     >
                         <Icon name={SOCIAL_ICONS[social.name] || social.name} size={24} />
-                    </a>
+                    </a> : <span
+                        class="social-link opacity-50"
+                        role="link"
+                        aria-disabled="true"
+                        aria-label={`${social.name} (link coming soon)`}
+                        title={`${social.name} (link coming soon)`}
+                    >
+                        <Icon name={SOCIAL_ICONS[social.name] || social.name} size={24} />
+                    </span>
                 ))}
             </div>
         </div>

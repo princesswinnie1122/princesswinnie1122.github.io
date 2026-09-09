@@ -1,120 +1,109 @@
-# 🎓 Academic Portfolio Astro
+# Winnie Sheng's personal website
 
-[![Astro](https://img.shields.io/badge/ASTRO-FF5D01?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build/)
-[![Tailwind](https://img.shields.io/badge/TAILWIND-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/MIT-44CC11?style=for-the-badge)](https://opensource.org/license/mit)
+An Astro website with About and CV pages, a sticky profile sidebar, and light/dark themes.
 
-![Page Screenshot](public/main_page.jpg)
+## Run locally
 
-A fast, minimalist, and highly customizable Astro template designed specifically for researchers, professors, PhD students, and academics. 
+Requires Node.js **22.12.0 or newer**.
 
-Strongly inspired by [Academic Pages](https://github.com/academicpages/academicpages.github.io) and [AstroPaper](https://github.com/satnaing/astro-paper), this template prioritizes content readability, SEO discoverability, and ease of configuration without touching the UI code.
-
-> 🌟 **[View the Live Demo](https://astro-academics-page.vercel.app/)**
-
-## ✨ Features
-
-- **Markdown-Driven Collections:** Easily manage your `Bio`, `Blog`, `Publications`, `Projects`, `Talks`, `CV`, and `Teaching` experience purely through `.md` files, **no programming knowledge required**.
-- **Academic Standard Support:** Out-of-the-box $\LaTeX$ rendering support via `remark-math`/`rehype-katex`.
-- **Extensive Theming System:** Built-in Light/Dark mode toggle with a highly customizable underlying design system and several preset color palettes.
-- **Toggleable Sections:** Don't need a "Talks" or "Teaching" section? Disable them globally with a single boolean flag in your config.
-- **Peak Performance:** Built with Astro and Tailwind CSS v4 (via `@tailwindcss/vite`), yielding near-perfect Lighthouse scores and minimal client-side JavaScript.
-- **Analytics:** Includes native configuration options for self-hosted Umami analytics (`umami.websiteId`), as well as GA4 support (`ga4Id`).
-- **Two-Column Architecture:** Optimized layout with a sticky left profile sidebar and a scrollable main content area.
-
-## 🚀 Getting Started
-
-### 1. Bootstrap the Repository
-
-**Via GitHub CLI (Recommended):**
 ```bash
-gh repo create my-portfolio --template="rubzip/academic-portfolio-astro" --clone
-cd my-portfolio
-```
-
-**Via Standard Git:**
-```bash
-git clone https://github.com/rubzip/academic-portfolio-astro.git my-portfolio
-cd my-portfolio
-```
-
-### 2. Install Dependencies
-This project uses Node.js (requires **Node.js >= 22.12.0**).
-```bash
-npm install
-```
-
-### 3. Start Development Server
-```bash
+npm ci
 npm run dev
 ```
-Your local server will start at `http://localhost:4321`.
 
-## 📂 Architecture & Structure
+Open the Local URL printed by Astro (normally http://localhost:4321).
 
-This project follows a centralized configuration architecture and is driven entirely by Markdown/MDX content.
+To build and preview the static site:
 
-```text
-/
-├── public/                 # Static assets (images, favicon, robots.txt)
-├── src/
-│   ├── assets/             # Global icons (`icons.ts`)
-│   ├── components/         # Reusable Astro UI components (Tailwind classes used for styling)
-│   ├── config/             # ⚙️ ALL GLOBAL CONFIGURATION LIVES HERE
-│   │   ├── site.ts         # Meta details & Analytics (SITE, THEME_CONFIG, SETTINGS)
-│   │   ├── pages.ts        # Enable/Disable sections & subtitles (PAGES)
-│   │   ├── themes.ts       # Color palettes
-│   │   ├── navigation.ts   # Navbar links (NAV_LINKS)
-│   │   └── social.ts       # Social media links (SOCIALS)
-│   ├── content/            # 📝 ALL MARKDOWN CONTENT LIVES HERE
-│   │   ├── bio.md
-│   │   ├── cv.md
-│   │   ├── posts/
-│   │   ├── projects/
-│   │   ├── publications/
-│   │   ├── talks/
-│   │   └── teaching/
-│   ├── layouts/            # Page layout wrappers
-│   ├── pages/              # Astro routing
-│   ├── styles/             # Global CSS (`global.css` - Theme colors, base styles)
-│   └── types/              # TypeScript interfaces (content, display, config, themes)
-└── content.config.ts       # Zod schemas for all markdown collections
+```bash
+npm run build
+npm run preview
 ```
 
-## 📖 Documentation & Setup
+The build is written to `dist/`. There are no lint or typecheck scripts configured.
 
-For a comprehensive, step-by-step guide on how to configure your site, modify the design, and write new content, please refer to the dedicated setup post included in this template:
+## Update your content
 
-**👉 [Setting up Your Academic Portfolio](src/content/posts/setting-up-portfolio.md)**
+| Content | Where to edit |
+| --- | --- |
+| About text, name, institution | `src/content/bio.md` |
+| Embedded CV PDF URL | `src/content/cv.md` |
+| Downloadable PDF | `public/cv.pdf` |
+| Email and social links | `src/config/social.ts` |
+| Site title, description, themes | `src/config/site.ts` |
+| Page headings and availability | `src/config/pages.ts` |
+| Navigation links | `src/config/navigation.ts` |
 
+The About page is based on the supplied CV. The CV page embeds `public/cv.pdf` directly, so there is no duplicate web CV to maintain.
 
-## 📋 Configuration
+### Add your portrait
 
-All configuration is managed centrally in the `src/config` directory. Modify these files to personalize your portfolio without touching any UI code:
+Place your image in `public/`, for example `public/winnie.jpg`, and add `avatar: "winnie.jpg"` to the YAML frontmatter in `src/content/bio.md`. The sidebar omits the image when `avatar` is absent. No placeholder portrait is shown.
 
-| File | Purpose |
-| :--- | :--- |
-| [`pages.ts`](src/config/pages.ts) | Enable/disable entire sections (e.g., `talks`, `teaching`) and set page subtitles. |
-| [`themes.ts`](src/config/themes.ts) | Define and manage all color palettes. Use `THEME_CONFIG` in `site.ts` to apply. |
-| [`site.ts`](src/config/site.ts) | Manage metadata, analytics keys (Umami/GA4), and critical file paths. |
-| [`navigation.ts`](src/config/navigation.ts) | Define the primary navigation bar links. |
-| [`social.ts`](src/config/social.ts) | Configure social media links appearing in the footer and header. |
+### Replace or link your PDF
 
+Replace `public/cv.pdf` with your latest PDF, keeping this value in the YAML frontmatter of `src/content/cv.md`:
 
-## 🛠️ Build Commands
+```yaml
+pdfUrl: "/cv.pdf"
+```
 
-All standard build commands run through `npm`:
+The CV page embeds the document using the browser's PDF viewer. Download, print, and zoom controls are provided by that viewer; their availability and appearance depend on the browser. A small **Open PDF in a new tab** link is available beneath the viewer for browsers that do not display embedded PDFs well. No separate download button or duplicate CV text is added to the page.
 
-| Command | Action |
-| :--- | :--- |
-| `npm run dev` | Starts the local development server on `localhost:4321` |
-| `npm run build` | Builds your project for production output into `./dist/` |
-| `npm run preview` | Previews your production build locally |
-| `npm run format` | Runs Prettier on all files to format code |
+The PDF is served unchanged, including the contact information in the source document. The HTML pages show email and GitHub but omit the phone number. Remove `pdfUrl` to display “CV coming soon.”
 
-## 🤝 Contributing & License
+For Google Drive, use a publicly viewable file's embed URL in the form `https://drive.google.com/file/d/FILE_ID/preview` as `pdfUrl`; a regular `/view` sharing link is not the embed URL. Local `public/cv.pdf` is the default and does not depend on Drive permissions.
 
-Contributions, issues, and feature requests are always welcome! Feel free to check the [issues page](https://github.com/rubzip/academic-portfolio-astro/issues).
+### Add social profile links
 
-This project is licensed under the **MIT License** - see the `LICENSE` file for details.
+Edit `src/config/social.ts`. GitHub and email are already populated. The Mail entry also supplies the typewriter-style email address in the sidebar. Google Scholar and LinkedIn have `href: ""` placeholders: paste your profile URLs between the quotes. Their icons are visible but inactive until a URL is filled in. Set `isActive: false` to hide an icon. ORCID is omitted.
+
+### Change background and text colors
+
+Edit `src/config/themes.ts`. The selected palettes are `light_default` (light mode) and `dark_midnight` (dark mode). In each palette:
+
+- `background`: page background
+- `foreground`: main text color
+- `accent`: links on hover and visual accents
+- `muted`: secondary text
+- `border`: borders and dividers
+- `surface`: secondary surfaces
+
+Use hex values such as `"#ffffff"` for white or `"#111827"` for dark text. For example, set `light_default.background` to `"#ffffff"` and `light_default.foreground` to `"#222222"`. Keep text and background colors readable together.
+
+Select different palettes using `THEME_CONFIG.themeLight` and `THEME_CONFIG.themeDark` in `src/config/site.ts`. While `npm run dev` is running, saved changes update the local site. These colors style the website around the PDF; the PDF retains the colors in the original document.
+
+## Project structure
+
+```text
+public/                 # CV PDF, portrait, favicons, robots.txt
+src/assets/             # Icons used by the sidebar and theme toggle
+src/components/layout/  # Sidebar, navigation, content wrapper, footer
+src/components/ui/      # Shared icon renderer
+src/config/             # Site, pages, navigation, socials, themes
+src/content/            # bio.md and cv.md
+src/layouts/            # Shared page layout
+src/pages/              # About, CV, and 404
+src/styles/             # Global styles
+src/types/              # Configuration and theme types
+```
+
+Only About (`/`), CV (`/cv/`), and the 404 page are generated. The template's blog, publications, projects, talks, teaching, tags, RSS, and developer tools have been removed, together with their sample content and supporting code. The sitemap contains About and CV only.
+
+The CV is maintained at `public/cv.pdf`; the identical root-level source copy was removed. Your portrait is kept at `public/winnie.jpg` and can be enabled with the `avatar` frontmatter field above.
+
+The installed `node_modules/` and generated `.astro/` and `dist/` directories are ignored by Git. Keep `node_modules/` for local development; `npm run build` recreates `dist/`.
+
+## Hosting configuration
+
+The site URL is configured for `https://princesswinnie1122.github.io/`, at the domain root. Keep `astro.config.mjs` and `SITE.website` in `src/config/site.ts` aligned if the domain changes.
+
+The existing GitHub Pages workflow deploys pushes to `main` and supports manual runs. Local development and builds do not publish anything.
+
+## Maintenance
+
+Unused RSS, math-rendering, and font dependencies have been removed. This cleanup does not upgrade the remaining dependency versions. Use `npm audit` to review dependency advisories before publishing.
+
+## Template credit
+
+Based on [Academic Portfolio Astro](https://github.com/rubzip/academic-portfolio-astro), using Astro and Tailwind CSS v4. Content stays in Markdown; component styling belongs in `src/styles/global.css` or Tailwind classes.

@@ -4,7 +4,7 @@ import { NAV_LINKS, PAGES } from "../../config";
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="navbar">
+<nav class="navbar" aria-label="Main navigation">
     <ul class="nav-links">
         {
             NAV_LINKS.filter((link) => {
@@ -12,8 +12,8 @@ const currentPath = Astro.url.pathname;
                 const pageKey = isHome
                     ? "home"
                     : link.href.split("/").filter(Boolean)[0];
-                const pageConfig = (PAGES as any)[pageKey];
-                return link.isActive !== false && pageConfig?.active !== false;
+                const pageConfig = PAGES[pageKey];
+                return link.isActive !== false && pageConfig?.isActive !== false;
             }).map((link) => (
                 <li>
                     <a

@@ -30,13 +30,13 @@ export const THEMES: Record<string, Theme> = {
         border: '#eaddc6',
         accent: '#b84c30',
     },
-    dark_notepad: {
+    dark_midnight: {
         isDark: true,
-        background: '#241f1c',
-        surface: '#241f1c',
-        foreground: '#e6dfd3',
-        muted: '#8a7d71',
-        border: '#3d342d',
-        accent: '#d97757',
+        background: '#17182b',
+        surface: '#20213a',
+        foreground: '#e9e7f5',
+        muted: '#aaa8c2',
+        border: '#343550',
+        accent: '#f4b8a4',
     }
 };
