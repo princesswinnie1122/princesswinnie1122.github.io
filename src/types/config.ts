@@ -9,6 +9,7 @@ export interface SiteConfig {
 }
 
 export interface ThemeConfig {
+    defaultTheme: "light" | "dark";
     lightAndDark: boolean;
     themeLight: string;
     themeDark: string;

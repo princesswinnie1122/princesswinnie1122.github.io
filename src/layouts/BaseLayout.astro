@@ -58,7 +58,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang={SITE.lang} style={themeVariables}>
+<html lang={SITE.lang} style={themeVariables} data-theme={THEME_CONFIG.defaultTheme} data-default-theme={THEME_CONFIG.defaultTheme}>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
@@ -145,25 +145,26 @@ const jsonLd = {
             )
         }
         <script is:inline>
-            function setTheme() {
-                const theme = (() => {
-                    if (
-                        typeof localStorage !== "undefined" &&
-                        localStorage.getItem("theme")
-                    ) {
-                        return localStorage.getItem("theme");
-                    }
-                    if (
-                        window.matchMedia("(prefers-color-scheme: dark)")
-                            .matches
-                    ) {
-                        return "dark";
-                    }
-                    return "light";
-                })();
-
+            function applyTheme(theme) {
                 document.documentElement.setAttribute("data-theme", theme);
-                localStorage.setItem("theme", theme);
+                const toggle = document.getElementById("theme-toggle");
+                if (toggle) {
+                    const label = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+                    toggle.setAttribute("aria-label", label);
+                    toggle.setAttribute("title", label);
+                }
+            }
+
+            function setTheme() {
+                let theme = document.documentElement.dataset.defaultTheme || "dark";
+                try {
+                    // Store explicit choices separately from the old device-derived setting.
+                    const preferred = localStorage.getItem("theme-preference");
+                    if (preferred === "light" || preferred === "dark") theme = preferred;
+                } catch {
+                    // The configured default also works when storage is unavailable.
+                }
+                applyTheme(theme);
             }
 
             setTheme();
@@ -171,18 +172,17 @@ const jsonLd = {
 
             function initToggle() {
                 const toggle = document.getElementById("theme-toggle");
-                if (toggle) {
-                    toggle.addEventListener("click", () => {
-                        const current =
-                            document.documentElement.getAttribute("data-theme");
-                        const next = current === "dark" ? "light" : "dark";
-                        document.documentElement.setAttribute(
-                            "data-theme",
-                            next,
-                        );
-                        localStorage.setItem("theme", next);
-                    });
-                }
+                if (!toggle) return;
+                applyTheme(document.documentElement.dataset.theme);
+                toggle.onclick = () => {
+                    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+                    applyTheme(next);
+                    try {
+                        localStorage.setItem("theme-preference", next);
+                    } catch {
+                        // Switching still works without persistent browser storage.
+                    }
+                };
             }
 
             document.addEventListener("astro:page-load", initToggle);

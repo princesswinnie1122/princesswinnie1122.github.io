@@ -1,5 +1,6 @@
 ---
-import { NAV_LINKS, PAGES } from "../../config";
+import Icon from "../ui/Icon.astro";
+import { NAV_LINKS, PAGES, THEME_CONFIG } from "../../config";
 
 const currentPath = Astro.url.pathname;
 ---
@@ -33,4 +34,16 @@ const currentPath = Astro.url.pathname;
             ))
         }
     </ul>
+    {THEME_CONFIG.lightAndDark && (
+        <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch color theme"
+            title="Switch color theme"
+            class="btn-icon ml-auto shrink-0"
+        >
+            <Icon name="Sun" size={16} class="hidden dark:block" />
+            <Icon name="Moon" size={16} class="block dark:hidden" />
+        </button>
+    )}
 </nav>

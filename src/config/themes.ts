@@ -4,12 +4,12 @@ export { type Theme, type ThemeName, type ThemeColors };
 
 export const THEMES: Record<string, Theme> = {
     light_default: {
-        background: "#f9fafb",
-        foreground: "#111827",
-        accent: "#3b82f6",
-        muted: "#6b7280",
-        border: "#e5e7eb",
-        surface: "#f9fafb",
+        background: "#eeedf8",
+        foreground: "#282644",
+        accent: "#6150a8",
+        muted: "#716b8b",
+        border: "#d3cee6",
+        surface: "#f8f7fd",
         isDark: false,
     },
     dark_default: {

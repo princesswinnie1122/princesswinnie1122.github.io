@@ -10,6 +10,7 @@ export const SITE: SiteConfig = {
 };
 
 export const THEME_CONFIG: ThemeConfig = {
+    defaultTheme: "dark",
     lightAndDark: true,
     themeLight: "light_default",
     themeDark: "dark_midnight",
