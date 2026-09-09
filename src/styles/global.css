@@ -209,8 +209,18 @@ a:hover,
    LAYOUT SECTIONS
    =========================================== */
 
+/* Navigation comes first in the document and in the phone layout. */
+.site-shell {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+}
+
 /* Sidebar */
 .sidebar {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    align-self: start;
     width: 280px;
     height: 100vh;
     position: sticky;
@@ -224,7 +234,27 @@ a:hover,
     transition: background 0.3s ease;
 }
 
+.sidebar-profile,
+.sidebar-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    text-align: center;
+}
+
+.sidebar-socials {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
 .sidebar-avatar {
+    flex-shrink: 0;
+    margin-bottom: 1rem;
     width: 160px;
     height: 160px;
     border-radius: 50%;
@@ -256,6 +286,7 @@ a:hover,
 }
 
 .sidebar-email {
+    margin-top: 1.5rem;
     font-family: "Courier New", Courier, monospace;
     font-size: 0.875rem;
     font-weight: 400;
@@ -266,6 +297,8 @@ a:hover,
 
 /* Navbar */
 .navbar {
+    grid-column: 2;
+    grid-row: 1;
     padding: 1rem 1.5rem;
     display: flex;
     justify-content: flex-start;
@@ -331,21 +364,21 @@ a:hover,
 
 /* Main Content Area */
 .main-content {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    background: var(--background);
-    transition: background 0.3s ease;
+    display: contents;
 }
 
 .main-body {
+    grid-column: 2;
+    grid-row: 2;
+    min-width: 0;
     padding: 1.5rem 2rem 2rem;
     flex: 1;
 }
 
 /* Footer */
 .footer {
+    grid-column: 2;
+    grid-row: 3;
     padding: 1.5rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -528,64 +561,6 @@ a:hover,
     }
 }
 
-/* ===========================================
-   RESPONSIVE
-   =========================================== */
-
-@media (max-width: 1024px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        border-right: none;
-        padding: 1rem;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-    }
-
-    .sidebar-avatar {
-        width: 112px;
-        height: 112px;
-    }
-
-    .main-body {
-        padding: 1rem 1.5rem;
-    }
-
-    .main-content {
-        width: 100%;
-        flex: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .sidebar {
-        padding: 0.75rem 1rem;
-        gap: 0.5rem;
-    }
-
-    .sidebar-avatar {
-        width: 80px;
-        height: 80px;
-    }
-
-    .sidebar-name {
-        font-size: 1.25rem;
-    }
-
-    .main-body {
-        padding: 0.75rem 1rem;
-    }
-
-    .nav-links {
-        gap: 1rem;
-    }
-
-    .nav-link {
-        font-size: 0.85rem;
-    }
-}
 /* Embedded CV: native PDF controls stay inside the viewer. */
 .cv-pdf-viewer {
     display: block;
@@ -601,4 +576,195 @@ a:hover,
 :is(a, button):focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 4px;
+}
+
+.cv-document {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.cv-pdf-open {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+}
+
+/* Compact profile header and comfortable touch controls on tablets and phones. */
+@media (width < 64rem) {
+    .site-shell {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 2rem 1.25rem 1rem;
+    }
+
+    .sidebar-profile {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 1rem;
+        width: 100%;
+        text-align: left;
+    }
+
+    .sidebar-profile:not(:has(.sidebar-avatar)) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sidebar-avatar {
+        width: 88px;
+        height: 88px;
+        margin-bottom: 0;
+    }
+
+    .sidebar-details {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .sidebar-name {
+        font-size: 1.375rem;
+    }
+
+    .sidebar-email {
+        max-width: 100%;
+        margin-top: 0.75rem;
+    }
+
+    .sidebar-socials {
+        justify-content: flex-start;
+        gap: 0.25rem;
+        margin-top: 0.5rem;
+    }
+
+    .social-link {
+        min-width: 44px;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .social-link svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .main-content > .main-body {
+        width: 100%;
+    }
+
+    .footer {
+        width: 100%;
+    }
+
+    .navbar {
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        gap: 1rem;
+        margin-top: 0;
+        padding: 0.5rem 1.25rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links li {
+        margin-bottom: 0;
+    }
+
+    .nav-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        min-width: 44px;
+        font-size: 1rem;
+    }
+
+    .nav-link-line {
+        bottom: 0;
+        height: 2px;
+    }
+
+    .navbar .btn-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .main-content > .main-body {
+        padding: 1.5rem 1.25rem 2rem;
+    }
+
+    .page-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .prose {
+        overflow-wrap: anywhere;
+    }
+
+    .prose p {
+        font-size: 1rem;
+        line-height: 1.75;
+        margin-bottom: 1.25rem;
+    }
+
+    .cv-pdf-viewer {
+        height: 70vh;
+        height: 70svh;
+        min-height: 320px;
+        max-height: 672px;
+    }
+
+    .cv-pdf-open {
+        order: -1;
+        margin: 0 0 0.75rem;
+    }
+
+    .cv-pdf-open a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+
+    .footer {
+        padding: 1.25rem;
+    }
+
+    .footer .body-xs {
+        font-size: 0.8125rem;
+    }
+}
+
+@media (width < 23rem) {
+    .sidebar {
+        padding: 1.5rem 1rem 0.75rem;
+    }
+
+    .sidebar-profile {
+        gap: 0.75rem;
+    }
+
+    .sidebar-avatar {
+        width: 72px;
+        height: 72px;
+    }
+
+    .sidebar-name {
+        font-size: 1.25rem;
+    }
+
+    .navbar,
+    .main-content > .main-body,
+    .footer {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }

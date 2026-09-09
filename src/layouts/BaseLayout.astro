@@ -1,6 +1,7 @@
 ---
 import { SITE, THEME_CONFIG, ANALYTICS, THEMES } from "../config";
 import { ClientRouter } from "astro:transitions";
+import Navbar from "../components/layout/Navbar.astro";
 import LeftSidebar from "../components/layout/LeftSidebar.astro";
 import RightMain from "../components/layout/RightMain.astro";
 import "@fontsource/inter/400.css";
@@ -191,7 +192,8 @@ const jsonLd = {
     <body
         class="bg-background text-foreground transition-colors duration-300 min-h-screen"
     >
-        <div class="flex max-lg:flex-col mx-auto max-w-6xl w-full min-h-screen">
+        <div class="site-shell mx-auto max-w-6xl w-full min-h-screen">
+            <Navbar />
             <LeftSidebar />
             <RightMain>
                 <slot />

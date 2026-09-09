@@ -22,13 +22,13 @@ const viewerUrl = pdfUrl ? `${pdfUrl.split("#")[0]}#toolbar=1&navpanes=0&view=Fi
     </header>
 
     {pdfUrl ? (
-        <section aria-label="CV PDF">
+        <section aria-label="CV PDF" class="cv-document">
             <iframe
                 src={viewerUrl}
                 title="Winnie Sheng's curriculum vitae (PDF)"
                 class="cv-pdf-viewer"
             />
-            <p class="mt-3 text-sm">
+            <p class="cv-pdf-open">
                 <a href={pdfUrl} target="_blank" rel="noopener noreferrer" data-astro-reload>
                     Open PDF in a new tab
                 </a>
