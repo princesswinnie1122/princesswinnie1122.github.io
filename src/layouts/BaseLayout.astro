@@ -40,7 +40,6 @@ interface Props {
 }
 
 const { 
-    title, 
     description = SITE.desc, 
     ogImage = SITE.ogImage,
     ogType = "website",
@@ -63,8 +62,7 @@ const jsonLd = {
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href={SITE.favicon} />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href={SITE.favicon} />
         <meta name="generator" content={Astro.generator} />
 
         <!-- Robots / Indexing -->
@@ -76,22 +74,22 @@ const jsonLd = {
         <link rel="canonical" href={canonicalURL} />
 
         <!-- General Meta Tags -->
-        <title>{title} | {SITE.title}</title>
-        <meta name="title" content={`${title} | ${SITE.title}`} />
+        <title>{SITE.title}</title>
+        <meta name="title" content={SITE.title} />
         <meta name="description" content={description} />
         <meta name="author" content={SITE.author} />
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content={ogType} />
         <meta property="og:url" content={canonicalURL} />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={SITE.title} />
         <meta property="og:description" content={description} />
         {ogImage && <meta property="og:image" content={new URL(ogImage, canonicalURL)} />}
 
         <!-- Twitter -->
         <meta property="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
         <meta property="twitter:url" content={canonicalURL} />
-        <meta property="twitter:title" content={title} />
+        <meta property="twitter:title" content={SITE.title} />
         <meta property="twitter:description" content={description} />
         {ogImage && <meta property="twitter:image" content={new URL(ogImage, canonicalURL)} />}
 

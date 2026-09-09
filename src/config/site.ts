@@ -5,7 +5,7 @@ export const SITE: SiteConfig = {
     author: "Winnie Sheng",
     desc: "Winnie Sheng studies Chemical Engineering and Computer Science at NTHU and researches machine learning for molecular and quantum systems.",
     title: "Winnie Sheng",
-    favicon: "/favicon.svg",
+    favicon: "/levi.png",
     lang: "en",
 };
 
