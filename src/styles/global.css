@@ -589,7 +589,7 @@ a:hover,
     font-size: 0.875rem;
 }
 
-/* Compact profile header and comfortable touch controls on tablets and phones. */
+/* Centered profile and generous touch controls on tablets and phones. */
 @media (width < 64rem) {
     .site-shell {
         display: flex;
@@ -600,45 +600,43 @@ a:hover,
         width: 100%;
         height: auto;
         position: static;
-        padding: 2rem 1.25rem 1rem;
+        padding: 2rem 1.25rem 1.25rem;
     }
 
     .sidebar-profile {
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr);
-        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
         width: 100%;
-        text-align: left;
-    }
-
-    .sidebar-profile:not(:has(.sidebar-avatar)) {
-        grid-template-columns: minmax(0, 1fr);
+        text-align: center;
     }
 
     .sidebar-avatar {
-        width: 88px;
-        height: 88px;
+        width: 160px;
+        height: 160px;
         margin-bottom: 0;
     }
 
     .sidebar-details {
-        align-items: flex-start;
-        text-align: left;
+        width: 100%;
+        align-items: center;
+        text-align: center;
     }
 
     .sidebar-name {
-        font-size: 1.375rem;
+        font-size: 1.5rem;
     }
 
     .sidebar-email {
         max-width: 100%;
-        margin-top: 0.75rem;
+        margin-top: 1rem;
     }
 
     .sidebar-socials {
-        justify-content: flex-start;
-        gap: 0.25rem;
-        margin-top: 0.5rem;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 1rem;
     }
 
     .social-link {
@@ -668,24 +666,28 @@ a:hover,
         z-index: 10;
         gap: 1rem;
         margin-top: 0;
-        padding: 0.5rem 1.25rem;
+        padding: 0.875rem 1.25rem;
         border-bottom: 1px solid var(--border);
     }
 
     .nav-links {
-        gap: 1rem;
+        flex: 1;
+        gap: 0.75rem;
     }
 
     .nav-links li {
+        flex: 1;
         margin-bottom: 0;
     }
 
     .nav-link {
         display: inline-flex;
         align-items: center;
-        min-height: 44px;
-        min-width: 44px;
-        font-size: 1rem;
+        justify-content: center;
+        width: 100%;
+        min-height: 48px;
+        padding: 0.5rem 0.75rem;
+        font-size: 1.0625rem;
     }
 
     .nav-link-line {
@@ -694,8 +696,13 @@ a:hover,
     }
 
     .navbar .btn-icon {
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .navbar .btn-icon svg {
+        width: 20px;
+        height: 20px;
     }
 
     .main-content > .main-body {
@@ -744,23 +751,7 @@ a:hover,
 }
 
 @media (width < 23rem) {
-    .sidebar {
-        padding: 1.5rem 1rem 0.75rem;
-    }
-
-    .sidebar-profile {
-        gap: 0.75rem;
-    }
-
-    .sidebar-avatar {
-        width: 72px;
-        height: 72px;
-    }
-
-    .sidebar-name {
-        font-size: 1.25rem;
-    }
-
+    .sidebar,
     .navbar,
     .main-content > .main-body,
     .footer {
