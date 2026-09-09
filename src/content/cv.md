@@ -1,5 +1,5 @@
 ---
 name: "Winnie Sheng"
 title: "Curriculum Vitae"
-pdfUrl: "/cv.pdf"
+pdfUrl: "/Erh-Wei (Winnie) Sheng_CV.pdf"
 ---
