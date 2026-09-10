@@ -4,7 +4,7 @@ avatar: "winnie.jpg"
 ---
 Hi, I'm Winnie, an undergraduate studying Chemical Engineering and Computer Science at National Tsing Hua University (NTHU), Taiwan.
 
-My interests revolve around representation learning that respects the symmetries of nature. I aim to use machine learning approaches such as neural quantum states to advance accurate variational modeling of quantum many-body systems beyond the practical reach of conventional ab initio methods, including strongly correlated systems.
+My interests revolve around representation learning that respects the symmetries of nature. Recently, I've been particularly drawn to neural quantum states and variational modeling of quantum many-body systems beyond the practical reach of conventional ab initio methods, such as strongly correlated systems.
 
 At Caltech's [Anima AI+Science Lab](https://tensorlab.cms.caltech.edu/users/anima/index.html), I'm part of the AI for chemistry group, advised by Prof. Anima Anandkumar. My latest work focuses on SU(2)-equivariant graph neural networks for molecular magnetism. I also helped with GPU acceleration of the OrbitAll foundation model. Currently, at NTHU's [Lab for Material and Molecular Design](https://sites.google.com/view/lm2d), I'm developing equivariant GNNs for vibrational circular dichroism (VCD) spectroscopy with Prof. Kun-Han Lin. My earlier work there includes building an automated force-field parameterization toolkit and studying high-entropy alloys for the hydrogen evolution reaction using density functional theory.
 
